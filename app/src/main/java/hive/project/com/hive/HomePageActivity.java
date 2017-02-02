@@ -3,6 +3,7 @@ package hive.project.com.hive;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -53,16 +54,6 @@ public class HomePageActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-      FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-      fab.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                      .setAction("Action", null).show();
-          }
-      });
-
     }
 
 
@@ -75,16 +66,12 @@ public class HomePageActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+//            finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -118,11 +105,11 @@ public class HomePageActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "RECOMMENDED";
                 case 1:
-                    return "SECTION 2";
+                    return "PROMOTIONS";
                 case 2:
-                    return "SECTION 3";
+                    return "ALL";
             }
             return null;
         }
@@ -163,3 +150,4 @@ public class HomePageActivity extends AppCompatActivity {
         }
     }
 }
+
